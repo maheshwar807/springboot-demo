@@ -36,7 +36,7 @@ pipeline{
         }*/
         stage('Deploy to Development'){
             steps{
-             sh 'sudo cp target/springboot-0.0.1-SNAPSHOT.war /opt/apache-tomcat-8.5.47/webapps/Springboot/'
+             deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://18.224.251.223:8000/')], contextPath: null, onFailure: false, war: '**/*.war'
             }
         }
          /*stage ('Deploy'){

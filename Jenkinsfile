@@ -32,7 +32,7 @@ sh label: '', script: 'curl -u $usr:$pwd_2 --upload-file target/myWebApp_Test-0.
 }
             
         }
-        }*/
+        }
          stage ('Deploy'){
             steps{
                  
@@ -41,7 +41,7 @@ sh label: '', script: 'curl -u $usr:$pwd_2 --upload-file target/myWebApp_Test-0.
             
         }
 
-    }
+    }*/
 }
      /*post {
    success {

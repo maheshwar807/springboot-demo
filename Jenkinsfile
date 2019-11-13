@@ -11,13 +11,13 @@ pipeline{
                
             }
         }
-    /*stage('Sonar') 
+    stage('Sonar') 
        {environment {
-           scannerHome=tool 'sonar scanner'
+           scannerHome=tool 'sonarScanner'
        }
             steps {
-                withSonarQubeEnv('Sonar') {
-                sh "mvn sonar:sonar -Dsonar.host.url=http://3.17.164.37:9000"
+                withSonarQubeEnv('SonarQube') {
+                sh "mvn sonar:sonar"
                 }
             }
         }

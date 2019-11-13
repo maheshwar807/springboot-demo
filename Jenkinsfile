@@ -30,7 +30,7 @@ pipeline{
        }
         stage ('Nexus'){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'Nexus', passwordVariable: 'password', usernameVariable: 'username')]) {
+                withCredentials([usernamePassword(credentialsId: 'Nexus_Credentials', passwordVariable: 'password', usernameVariable: 'username')]) {
                     sh label: '', script: 'curl -u $username:$password --upload-file target/springboot-0.0.1-SNAPSHOT.war http://18.224.155.110:8081/nexus/content/repositories/devopstraining/hexagon6/springboot-0.0.1-SNAPSHOT.war'
                 }
        
@@ -38,13 +38,11 @@ pipeline{
         }
          /*stage ('Deploy'){
             steps{
-                 
-                    //sh label: '', script:'curl -u username:password ec2-18-188-202-13.us-east-2.compute.amazonaws.com:8080/manager/text/undeploy?path=/Subha_Spring_Test_1'
-                    sh label: '', script: 'curl -u  deploy:deployed --upload-file target/myWebApp_Test-0.0.1-SNAPSHOT.war http://ec2-13-233-251-211.ap-south-1.compute.amazonaws.com:8080/manager/text/deploy?config=file:/var/lib/tomcat8/myWebApp_Test-0.0.1-SNAPSHOT.war\\&path=/Subha_Spring_Test_0'
+              sh label: '', script: 'curl -u  deploy:deployed --upload-file target/myWebApp_Test-0.0.1-SNAPSHOT.war http://ec2-13-233-251-211.ap-south-1.compute.amazonaws.com:8080/manager/text/deploy?config=file:/var/lib/tomcat8/myWebApp_Test-0.0.1-SNAPSHOT.war\\&path=/Subha_Spring_Test_0'
             
-        }
+        }*/
 
-    }*/
+    }
 }
      /*post {
    success {

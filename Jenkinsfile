@@ -26,8 +26,8 @@ pipeline{
               timeout(time: 1, unit: 'HOURS') {
                 waitForQualityGate abortPipeline: true
               }
-            }
-       }
+         }
+        }
         stage ('Nexus'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'Nexus_Credentials', passwordVariable: 'password', usernameVariable: 'username')]) {
@@ -53,6 +53,5 @@ pipeline{
     }
     
   }*/
-}
 
 

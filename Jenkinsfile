@@ -4,11 +4,9 @@ pipeline{
     maven "Maven"
     }
     stages{
-     stage ('build & test'){
+     /*stage ('build & test'){
             steps{
-               
-                    sh "mvn clean install"
-               
+                sh "mvn clean install"
             }
         }
     stage('Sonar') 
@@ -35,6 +33,9 @@ pipeline{
                 }
        
         }
+        }*/
+        stage('Deploy to Development'){
+             sh 'cp target/springboot-0.0.1-SNAPSHOT.war /opt/apache-tomcat-8.5.47/webapps/Springboot/'
         }
          /*stage ('Deploy'){
             steps{

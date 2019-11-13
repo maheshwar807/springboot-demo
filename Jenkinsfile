@@ -39,6 +39,12 @@ pipeline{
              deploy adapters: [tomcat8(credentialsId: 'tomcat', path: '', url: 'http://18.224.251.223:8000/')], contextPath: null, onFailure: false, war: '**/*.war'
             }
         }
+        stage('Deploy to Ansible'){
+            steps{
+                sh 'scp -i /var/lib/jenkins/.ssh/id_rsa -r /var/lib/jenkins/workspace/springboot-app-demo/target/springboot-0.0.1-SNAPSHOT.war ansadmin@172.31.31.91:/projects
+                sh 'ssh -t -t -i /var/lib/jenkins/.ssh/id_rsa ansadmin@172.31.31.91 "ansible-playbook /opt/playbooks/play-new.yml"'
+            }
+        }
          /*stage ('Deploy'){
             steps{
               sh label: '', script: 'curl -u  deploy:deployed --upload-file target/myWebApp_Test-0.0.1-SNAPSHOT.war http://ec2-13-233-251-211.ap-south-1.compute.amazonaws.com:8080/manager/text/deploy?config=file:/var/lib/tomcat8/myWebApp_Test-0.0.1-SNAPSHOT.war\\&path=/Subha_Spring_Test_0'

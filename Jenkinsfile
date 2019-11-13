@@ -1,10 +1,8 @@
 pipeline{
     agent any
-    tools {
-    maven "Maven"
-    }
+    tools { maven "Maven" }
     stages{
-     /*stage ('build & test'){
+     /*stage ('Build'){
             steps{
                 sh "mvn clean install"
             }
@@ -45,22 +43,5 @@ pipeline{
                 sh 'ssh -t -t -i /var/lib/jenkins/.ssh/id_rsa ansadmin@172.31.31.91 "ansible-playbook /opt/playbooks/play-new.yml"'
             }
         }
-         /*stage ('Deploy'){
-            steps{
-              sh label: '', script: 'curl -u  deploy:deployed --upload-file target/myWebApp_Test-0.0.1-SNAPSHOT.war http://ec2-13-233-251-211.ap-south-1.compute.amazonaws.com:8080/manager/text/deploy?config=file:/var/lib/tomcat8/myWebApp_Test-0.0.1-SNAPSHOT.war\\&path=/Subha_Spring_Test_0'
-            
-        }*/
-
     }
 }
-     /*post {
-   success {
-      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-    }
-    failure {
-      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-    }
-    
-  }*/
-
-

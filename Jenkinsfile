@@ -31,7 +31,7 @@ pipeline{
         stage ('Nexus'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'Nexus', passwordVariable: 'password', usernameVariable: 'username')]) {
-                    sh label: '', script: 'curl -u $username:$password --upload-file target/springboot-0.0.1-SNAPSHOT.war http://18.224.155.110:8081/nexus/content/repositories/devopstraining/springboot-demo-app/springboot-0.0.1-SNAPSHOT.war'
+                    sh label: '', script: 'curl -u $username:$password --upload-file target/springboot-0.0.1-SNAPSHOT.war http://18.224.155.110:8081/nexus/content/repositories/devopstraining/hexagon6/springboot-0.0.1-SNAPSHOT.war'
                 }
        
         }

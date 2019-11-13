@@ -36,7 +36,7 @@ pipeline{
         }*/
         stage('Deploy to Development'){
             steps{
-             sh 'cp target/springboot-0.0.1-SNAPSHOT.war /opt/apache-tomcat-8.5.47/webapps/Springboot/'
+             sh 'sudo cp target/springboot-0.0.1-SNAPSHOT.war /opt/apache-tomcat-8.5.47/webapps/Springboot/'
             }
         }
          /*stage ('Deploy'){

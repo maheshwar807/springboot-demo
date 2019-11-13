@@ -21,7 +21,7 @@ pipeline{
                 }
             }
         }
-        /*stage("Quality Gate") {
+        stage("Quality Gate") {
             steps {
               timeout(time: 1, unit: 'HOURS') {
                 waitForQualityGate abortPipeline: true
@@ -30,13 +30,13 @@ pipeline{
        }
         stage ('Nexus'){
             steps{
- withCredentials([usernamePassword(credentialsId: 'sudipa_nexus', passwordVariable: 'pwd_2', usernameVariable: 'usr')]) {
-sh label: '', script: 'curl -u $usr:$pwd_2 --upload-file target/myWebApp_Test-0.0.1-SNAPSHOT.war http://3.17.164.37:8081/nexus/content/repositories/devopstraining/Subha_Nexus_Test_Spring/myWebApp_Test-0.0.1-SNAPSHOT.war'
-}
-            
+                withCredentials([usernamePassword(credentialsId: 'sudipa_nexus', passwordVariable: 'pwd_2', usernameVariable: 'usr')]) {
+                    sh label: '', script: 'curl -u $username:$password --upload-file target/springboot-0.0.1-SNAPSHOT.war http://3.17.164.37:8081/nexus/content/repositories/devopstraining/Subha_Nexus_Test_Spring/myWebApp_Test-0.0.1-SNAPSHOT.war'
+                }
+       
         }
         }
-         stage ('Deploy'){
+         /*stage ('Deploy'){
             steps{
                  
                     //sh label: '', script:'curl -u username:password ec2-18-188-202-13.us-east-2.compute.amazonaws.com:8080/manager/text/undeploy?path=/Subha_Spring_Test_1'

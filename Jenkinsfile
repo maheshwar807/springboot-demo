@@ -22,7 +22,6 @@ pipeline{
                 }
             }
         }
-    /*
         stage("Quality Gate") {
             steps {
               timeout(time: 1, unit: 'HOURS') {
@@ -30,6 +29,8 @@ pipeline{
               }
          }
         }
+    /*
+        
         stage ('Nexus'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'Nexus_Credentials', passwordVariable: 'password', usernameVariable: 'username')]) {

@@ -9,7 +9,7 @@ pipeline{
         }
         stage('Nexus'){
             steps{
-                nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-starter-parent', classifier: '', file: '/var/lib/jenkins/workspace/demo/target/	springboot-0.0.1-SNAPSHOT.war', type: 'war']], credentialsId: 'Nexus', groupId: 'org.springframework.boot', nexusUrl: '159.65.148.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'devops', version: '1.1'
+                nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-starter-parent', classifier: '', file: '/var/lib/jenkins/workspace/demo/target/springboot-0.0.1-SNAPSHOT.war', type: 'war']], credentialsId: 'Nexus', groupId: 'org.springframework.boot', nexusUrl: '159.65.148.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'devops', version: '1.1'
             }
         }
     /*stage('Sonar') 

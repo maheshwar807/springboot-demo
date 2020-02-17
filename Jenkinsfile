@@ -29,6 +29,12 @@ pipeline{
               }
          }
         }
+        stage("Deploy to Tomcat"){
+            steps{
+                sh "rm -rf /opt/tomcat/webapps/springboot-0.0.1-SNAPSHOT.war"
+                sh "cp /var/lib/jenkins/workspace/demo/target/springboot-0.0.1-SNAPSHOT.war /opt/tomcat/webapps/"
+            }
+        }
     /*
         
         stage ('Nexus'){

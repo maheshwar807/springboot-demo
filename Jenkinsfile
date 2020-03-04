@@ -2,25 +2,25 @@ pipeline{
     agent any
     tools { maven "maven" }
     stages{
-     stage ('Build'){
+        stage ('Build'){
             steps{
                 sh "mvn clean package"
+            }
+        }
+        stage('Sonar'){
+            environment {
+                scannerHome=tool 'sonar'
+            }
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                sh "mvn sonar:sonar"
+                }
             }
         }
        /*
        stage('Nexus'){
             steps{
                 nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-starter-parent', classifier: '', file: '/var/lib/jenkins/workspace/demo/target/springboot-0.0.1-SNAPSHOT.war', type: 'war']], credentialsId: 'Nexus', groupId: 'org.springframework.boot', nexusUrl: '159.65.148.159:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'devops', version: '1.1'
-            }
-        }
-        stage('Sonar') 
-       {environment {
-           scannerHome=tool 'sonarScanner'
-       }
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                sh "mvn sonar:sonar"
-                }
             }
         }
         stage("Quality Gate") {

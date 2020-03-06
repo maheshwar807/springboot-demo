@@ -1,2 +1,2 @@
 # spring-boot-test-new
-# adding new content for auto trriger
+# Adding new content for auto trriger

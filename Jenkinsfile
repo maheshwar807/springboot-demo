@@ -18,22 +18,24 @@ pipeline{
             }
         }
         
+        
+        stage("Quality Gate") {
+            steps {
+              timeout(time: 1, unit: 'HOURS') {
+                waitForQualityGate abortPipeline: false
+              }
+         }
+        }
+        
+        
+       /*
+       
         stage('Nexus'){
             steps{
                 nexusArtifactUploader artifacts: [[artifactId: 'spring-boot-starter-parent', classifier: '', file: '/var/lib/jenkins/workspace/Springboot_demo/target/springboot-0.0.1-SNAPSHOT.war', type: 'war']], credentialsId: 'Nexus', groupId: 'org.springframework.boot', nexusUrl: '18.220.210.191:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'devops', version: '1.1'
             }
         }
         
-       /*
-       
-        
-        stage("Quality Gate") {
-            steps {
-              timeout(time: 1, unit: 'HOURS') {
-                waitForQualityGate abortPipeline: true
-              }
-         }
-        }
         
         stage("Deploy to Tomcat"){
             steps{
